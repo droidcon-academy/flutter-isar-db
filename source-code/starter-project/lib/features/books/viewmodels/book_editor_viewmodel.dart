@@ -66,8 +66,7 @@ class BookEditorViewModel extends _$BookEditorViewModel {
 
   /// Creates a [Book] object from the form fields' values and adds it to the
   /// database.
-  Future<void> addBook(
-      BuildContext context, GlobalKey<FormState> formKey) async {
+  Future<void> addBook(BuildContext context) async {
     // Check if an author is selected.
     if (author == null) {
       // Mark author as unselected to show invalid state in [AuthorField].
@@ -83,7 +82,7 @@ class BookEditorViewModel extends _$BookEditorViewModel {
     }
 
     // Check if the inputs of all [TextFormField]s are valid.
-    final bool isFormValid = formKey.currentState!.validate();
+    final bool isFormValid = Form.of(context).validate();
 
     // If any of the inputs are invalid, do not add the book to the database.
     if (!isAuthorSelected || !isGenreSelected || !isFormValid) {
@@ -119,10 +118,9 @@ class BookEditorViewModel extends _$BookEditorViewModel {
 
   /// Updates the provided [book] object with the form fields' values and
   /// saves it to the database.
-  Future<void> updateBook(
-      BuildContext context, GlobalKey<FormState> formKey, Book book) async {
+  Future<void> updateBook(BuildContext context, Book book) async {
     // If any of the inputs are invalid, do not update the book in the database.
-    if (!formKey.currentState!.validate()) return;
+    if (!Form.of(context).validate()) return;
 
     // If the cover image has been added.
     if (temporaryCoverImage.isNotEmpty && coverImage.isEmpty) {

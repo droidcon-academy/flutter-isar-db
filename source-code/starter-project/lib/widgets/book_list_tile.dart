@@ -38,7 +38,7 @@ class BookListTile extends StatelessWidget {
             ),
             const SizedBox(width: 16),
             Expanded(
-              flex: 6,
+              flex: 5,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -98,7 +98,7 @@ class BookListTile extends StatelessWidget {
                           style:
                               Theme.of(context).textTheme.labelSmall?.copyWith(
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 9,
+                                    fontSize: 8,
                                   ),
                         ),
                       ),
@@ -120,7 +120,7 @@ class BookListTile extends StatelessWidget {
                                         .colorScheme
                                         .onInverseSurface,
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 9,
+                                    fontSize: 8,
                                   ),
                         ),
                       ),

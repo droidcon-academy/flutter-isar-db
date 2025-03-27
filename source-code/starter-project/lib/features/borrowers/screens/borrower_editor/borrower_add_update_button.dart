@@ -5,11 +5,9 @@ import 'package:libertad/features/borrowers/viewmodels/borrower_editor_viewmodel
 
 /// Button that adds a new borrower to the database, or updates an existing one.
 class BorrowerAddUpdateButton extends ConsumerWidget {
-  final GlobalKey<FormState> formKey;
   final Borrower? borrower;
 
-  const BorrowerAddUpdateButton(
-      {super.key, required this.formKey, this.borrower});
+  const BorrowerAddUpdateButton({super.key, this.borrower});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -19,9 +17,9 @@ class BorrowerAddUpdateButton extends ConsumerWidget {
     return TextButton(
       onPressed: () {
         if (borrower == null) {
-          model.addBorrower(context, formKey);
+          model.addBorrower(context);
         } else {
-          model.updateBorrower(context, formKey, borrower!);
+          model.updateBorrower(context, borrower!);
         }
       },
       style: ButtonStyle(

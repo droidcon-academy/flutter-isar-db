@@ -5,10 +5,9 @@ import 'package:libertad/features/books/viewmodels/book_editor_viewmodel.dart';
 
 /// Button that adds a new book to the database, or updates an existing one.
 class BookAddUpdateButton extends ConsumerWidget {
-  final GlobalKey<FormState> formKey;
   final Book? book;
 
-  const BookAddUpdateButton({super.key, required this.formKey, this.book});
+  const BookAddUpdateButton({super.key, this.book});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -18,9 +17,9 @@ class BookAddUpdateButton extends ConsumerWidget {
     return TextButton(
       onPressed: () {
         if (book == null) {
-          model.addBook(context, formKey);
+          model.addBook(context);
         } else {
-          model.updateBook(context, formKey, book!);
+          model.updateBook(context, book!);
         }
       },
       style: ButtonStyle(

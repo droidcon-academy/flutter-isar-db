@@ -49,10 +49,9 @@ class BorrowerEditorViewModel extends _$BorrowerEditorViewModel {
 
   /// Creates a [Borrower] object from the form fields' values and adds it to
   /// the database.
-  Future<void> addBorrower(
-      BuildContext context, GlobalKey<FormState> formKey) async {
+  Future<void> addBorrower(BuildContext context) async {
     // If any of the inputs are invalid, do not add the book to the database.
-    if (!formKey.currentState!.validate()) return;
+    if (!Form.of(context).validate()) return;
 
     // If a profile picture has been selected, copy it to the app's documents
     // directory and update [profilePicture] with the new path.
@@ -83,11 +82,10 @@ class BorrowerEditorViewModel extends _$BorrowerEditorViewModel {
 
   /// Updates the provided [borrower] object with the form fields' values and
   /// saves it to the database.
-  Future<void> updateBorrower(BuildContext context,
-      GlobalKey<FormState> formKey, Borrower borrower) async {
+  Future<void> updateBorrower(BuildContext context, Borrower borrower) async {
     // If any of the inputs are invalid, do not update the borrower in the
     // database.
-    if (!formKey.currentState!.validate()) return;
+    if (!Form.of(context).validate()) return;
 
     // If the profile picture has been added.
     if (temporaryProfilePicture.isNotEmpty && profilePicture.isEmpty) {

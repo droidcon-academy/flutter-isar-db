@@ -80,7 +80,8 @@ class FilesRepository {
         await getApplicationDocumentsDirectory();
     // Retrieve app directory by appending to the path.
     final Directory appDirectory =
-        Directory('${applicationDocumentsDirectory.path}/Libertad');
+        await Directory('${applicationDocumentsDirectory.path}/Libertad')
+            .create(recursive: true);
     // Retrieve all files in the directory.
     final List<FileSystemEntity> files = appDirectory.listSync(recursive: true);
     // Return all files' path.
