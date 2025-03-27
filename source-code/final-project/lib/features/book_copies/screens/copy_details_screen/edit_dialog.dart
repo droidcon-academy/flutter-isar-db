@@ -22,62 +22,64 @@ class EditDialog extends ConsumerWidget {
 
     return Dialog(
       shape: RoundedRectangleBorder(),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-            child: Text(
-              'Edit Issuance Details',
-              style: Theme.of(context)
-                  .textTheme
-                  .headlineMedium
-                  ?.copyWith(fontWeight: FontWeight.bold),
-            ),
-          ),
-          Divider(height: 0),
-          SizedBox(height: 16),
-          Wrap(
-            alignment: WrapAlignment.start,
-            crossAxisAlignment: WrapCrossAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8),
-                child: IssueDateField(copy: copy),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8),
-                child: ReturnDateField(copy: copy),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8),
-                child: BorrowerField(copy: copy),
-              ),
-            ],
-          ),
-          SizedBox(height: 16),
-          TextButton(
-            onPressed: () => model.saveEdits(context),
-            style: ButtonStyle(
-              shape: WidgetStatePropertyAll(RoundedRectangleBorder()),
-              backgroundColor: WidgetStatePropertyAll(
-                Theme.of(context).primaryColor,
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+              child: Text(
+                'Edit Issuance Details',
+                style: Theme.of(context)
+                    .textTheme
+                    .headlineMedium
+                    ?.copyWith(fontWeight: FontWeight.bold),
               ),
             ),
-            child: SizedBox(
-              height: 48,
-              child: Center(
-                child: Text(
-                  'Save Edits',
-                  style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                        color: Theme.of(context).colorScheme.onPrimary,
-                        fontWeight: FontWeight.bold,
-                      ),
+            Divider(height: 0),
+            SizedBox(height: 16),
+            Wrap(
+              alignment: WrapAlignment.start,
+              crossAxisAlignment: WrapCrossAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: IssueDateField(copy: copy),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: ReturnDateField(copy: copy),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: BorrowerField(copy: copy),
+                ),
+              ],
+            ),
+            SizedBox(height: 16),
+            TextButton(
+              onPressed: () => model.saveEdits(context),
+              style: ButtonStyle(
+                shape: WidgetStatePropertyAll(RoundedRectangleBorder()),
+                backgroundColor: WidgetStatePropertyAll(
+                  Theme.of(context).primaryColor,
+                ),
+              ),
+              child: SizedBox(
+                height: 48,
+                child: Center(
+                  child: Text(
+                    'Save Edits',
+                    style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                          color: Theme.of(context).colorScheme.onPrimary,
+                          fontWeight: FontWeight.bold,
+                        ),
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
