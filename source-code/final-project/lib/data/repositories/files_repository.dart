@@ -39,7 +39,7 @@ class FilesRepository {
         .create(recursive: true);
     // Path to the new image file.
     final String newImagePath =
-        '${appImageDirectory.path}/${originalImagePath.split('\\').last}';
+        '${appImageDirectory.path}/${originalImagePath.split('/').last}';
     // Copy the selected image to the app's image directory.
     final File copiedFile = await File(originalImagePath).copy(newImagePath);
     return copiedFile;

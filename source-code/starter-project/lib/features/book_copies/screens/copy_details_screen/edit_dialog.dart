@@ -27,16 +27,12 @@ class EditDialog extends ConsumerWidget {
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-            child: Row(
-              children: [
-                Text(
-                  'Edit Issuance Details',
-                  style: Theme.of(context)
-                      .textTheme
-                      .headlineMedium
-                      ?.copyWith(fontWeight: FontWeight.bold),
-                ),
-              ],
+            child: Text(
+              'Edit Issuance Details',
+              style: Theme.of(context)
+                  .textTheme
+                  .headlineMedium
+                  ?.copyWith(fontWeight: FontWeight.bold),
             ),
           ),
           Divider(height: 0),
