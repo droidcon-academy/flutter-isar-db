@@ -70,6 +70,7 @@ class IsarDatabaseRepository extends DatabaseRepository {
       _isar = await Isar.open(
         [BookSchema, AuthorSchema, BookCopySchema, BorrowerSchema],
         directory: tempDirectory.path,
+        name: 'libertad',
       );
     }
   }

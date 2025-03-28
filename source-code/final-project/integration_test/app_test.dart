@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:libertad/data/mock/mock_data.dart';
@@ -8,6 +9,14 @@ import 'package:libertad/features/book_copies/screens/copy_details_screen/return
 import 'package:libertad/features/books/screens/book_details_screen/copy_list_tile.dart';
 import 'package:libertad/main.dart' as app;
 import 'package:libertad/widgets/book_list_tile.dart';
+
+/// Checks whether app has already been launched before the test is run.
+/// If the app has already been launched, it means that the Isar instance is
+/// active and shouldn't be initialized again. In this case, we manually run the
+/// app without initializing the database.
+/// If the app hasn't been launched, we run the [main] method which initializes
+/// the database internally before running the app.
+bool _appLaunched = false;
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
@@ -102,9 +111,20 @@ void main() {
   });
 }
 
-/// Launches the app.
+/// Launches the app via [main] method or manually pumps the [Libertad] widget
+/// which is the entry point of the application.
 Future<void> launchApp(WidgetTester tester) async {
-  await app.main();
+  if (_appLaunched) {
+    // If app has already been launched, pump the [Libertad] widget manually.
+    // [ProviderScope] is essential for riverpod models to inegrate with the UI.
+    await tester.pumpWidget(const ProviderScope(child: app.Libertad()));
+  } else {
+    // Else, launch the app by calling the [main] method. This will initialize
+    // the database as well.
+    await app.main();
+  }
+  // Mark the app as launched.
+  _appLaunched = true;
   await tester.pumpAndSettle();
 }
 
