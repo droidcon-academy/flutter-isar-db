@@ -111,7 +111,7 @@ class BookDetailsPage extends ConsumerWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(8),
                       child: Text(
-                        book.author!.name,
+                        book.author?.name ?? 'null',
                         style: Theme.of(context).textTheme.titleLarge,
                         textAlign: TextAlign.center,
                       ),

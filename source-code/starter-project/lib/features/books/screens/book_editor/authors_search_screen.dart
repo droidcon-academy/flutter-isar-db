@@ -98,7 +98,7 @@ class AuthorsSearchPage extends ConsumerWidget {
                                   .labelSmall
                                   ?.copyWith(fontStyle: FontStyle.italic)),
                           TextSpan(
-                            text: author.books.first.title,
+                            text: author.books.firstOrNull?.title ?? 'null',
                             style: Theme.of(context)
                                 .textTheme
                                 .labelSmall
