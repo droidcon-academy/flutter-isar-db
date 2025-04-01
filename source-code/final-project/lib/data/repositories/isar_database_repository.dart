@@ -54,7 +54,7 @@ class IsarDatabaseRepository extends DatabaseRepository {
   }
 
   /// Initialize database for testing.
-  /// System temporary directory is to setup the database instead of actual
+  /// System temporary directory is used to setup the database instead of actual
   /// app directory.
   /// This method should be called before interacting with the database.
   /// Typically called inside [setUp] method before running tests.

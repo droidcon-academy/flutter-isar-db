@@ -23,7 +23,6 @@ class Book {
   String coverImage;
 
   /// Set of all the copies of the book.
-
   final Set<BookCopy> totalCopies = {};
 
   /// Date/time of object creation.
