@@ -44,9 +44,10 @@ class CopyDetailsViewModel extends _$CopyDetailsViewModel {
           .borrowerStream(borrower!.id)
           .listen((_) => ref.notifyListeners());
     }
-    // Listen for changes in book copies collection and update the state with
-    // the latest data.
-    DatabaseRepository.instance.bookCopiesStream
+    // Listen for changes to this particular copy object and update the state
+    // with the latest data.
+    DatabaseRepository.instance
+        .bookCopyStream(copy.id)
         .listen((_) => ref.notifyListeners());
     return copy;
   }
