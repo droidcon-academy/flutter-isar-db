@@ -265,7 +265,7 @@ class MockDatabaseRepository extends DatabaseRepository {
   Future<void> clearDatabase() async => initialize();
 
   @override
-  Future<void> resetDatabase({deleteImages = true}) async {
+  Future<void> resetDatabase({bool deleteImages = true}) async {
     if (deleteImages) {
       await FilesRepository.instance.deleteImageFolder(ImageFolder.bookCovers);
       await FilesRepository.instance
@@ -275,6 +275,9 @@ class MockDatabaseRepository extends DatabaseRepository {
     }
     return initialize();
   }
+
+  @override
+  Future<void> hyperPopulateDatabase() async => initialize();
 
   // END: DEVELOPER OPTIONS
 }

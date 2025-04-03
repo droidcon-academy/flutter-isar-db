@@ -187,5 +187,8 @@ class IsarDatabaseRepository extends DatabaseRepository {
   Future<void> resetDatabase({deleteImages = true}) async =>
       throw UnimplementedError();
 
+  @override
+  Future<void> hyperPopulateDatabase() async => throw UnimplementedError();
+
   // END: DEVELOPER OPTIONS
 }
