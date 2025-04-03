@@ -434,6 +434,7 @@ class IsarDatabaseRepository extends DatabaseRepository {
     await _isar.writeTxn(() async {
       // Update author update time right before it's inserted in the database.
       author.updatedAt = DateTime.now();
+      // Update the author in the database.
       _isar.authors.put(author);
     });
   }
