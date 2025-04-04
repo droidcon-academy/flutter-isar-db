@@ -539,7 +539,7 @@ class IsarDatabaseRepository extends DatabaseRepository {
       // Update the copy in the database.
       await _isar.bookCopys.put(copy);
       // Save the link.
-      copy.currentBorrower.save();
+      await copy.currentBorrower.save();
     });
   }
 
@@ -548,7 +548,7 @@ class IsarDatabaseRepository extends DatabaseRepository {
   Future<void> returnCopy(BookCopy copy, Borrower borrower) async {
     return _isar.writeTxn(() async {
       // Return copy by resetting the borrower link.
-      copy.currentBorrower.reset();
+      await copy.currentBorrower.reset();
       // If returned copy was overdue, we update borrower with defaulter status
       // and fine.
       // [borrower] object already have them updated, we just need to
@@ -559,8 +559,8 @@ class IsarDatabaseRepository extends DatabaseRepository {
       // Update the copy in the database.
       await _isar.bookCopys.put(copy);
       // Save current and previous borrowers links.
-      copy.currentBorrower.save();
-      copy.previousBorrowers.save();
+      await copy.currentBorrower.save();
+      await copy.previousBorrowers.save();
     });
   }
 
@@ -1108,7 +1108,7 @@ Future<void> _hyperPopulateDatabase() async {
     // Clear database.
     await isar.clear();
 
-    // Generate 1000 authors and 2-5 books for each of them.
+    // Generate 1000 authors and 1-5 books for each of them.
     final AuthorsAndBooks authorsAndBooks =
         DataGenerators.generateAuthorsAndBooks(1000, 1, 5);
 

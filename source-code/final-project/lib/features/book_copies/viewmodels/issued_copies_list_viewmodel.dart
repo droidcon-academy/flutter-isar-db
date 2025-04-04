@@ -75,7 +75,7 @@ class IssuedCopiesListViewModel extends _$IssuedCopiesListViewModel {
     // to initialize data seperately. This listener handles the initialization
     // as well.
     DatabaseRepository.instance.booksStream.listen((_) async {
-      // Retrieve all authors from the database.
+      // Retrieve all books from the database.
       allBooks = await DatabaseRepository.instance.getBooks(
         sortBy: BookSort.title,
         sortOrder: SortOrder.ascending,
@@ -87,7 +87,7 @@ class IssuedCopiesListViewModel extends _$IssuedCopiesListViewModel {
     // to initialize data seperately. This listener handles the initialization
     // as well.
     DatabaseRepository.instance.borrowersStream.listen((_) async {
-      // Retrieve all authors from the database.
+      // Retrieve all borrowers from the database.
       allBorrowers = await DatabaseRepository.instance.getBorrowers(
         sortBy: BorrowerSort.name,
         sortOrder: SortOrder.ascending,
